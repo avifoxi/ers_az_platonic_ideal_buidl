@@ -1,7 +1,5 @@
 window.ERS = ERS || {};
 
-// var ModuleName = {};
-
 function ModuleName() {
 	/*
 	
@@ -24,42 +22,53 @@ function ModuleName() {
 		LANDING_PAGE_STUDY_TOOLS 
 		Array -- an ordered list of order of presentation on the home page 
 	
-		in contents is Array of each Tool's pages
+		in 'contents' is Array of each Tool's pages(or single page) 
 		
 	*/
 
 	var LANDING_PAGE_STUDY_TOOLS = [
-		lesson1: {
-			ensureUserHasCompleted: null,
+		{
 			title: 'Lesson 1',
+			ensureUserHasCompleted: null,
 			image: 'image.jpg',
-			thumbnailInSlider: 
+			thumbnailInSlider: 'gee i am a jpeg path',
+			userHasCompleted: false,
 			contents: [
-				'path_to_page0.html',
+				'path_to_page0.html OR .js ?',
 				'path_to_page1.html'
 			]
 		},
-		lesson2: {
-			ensureUserHasCompleted: 'lesson1',
+		{
 			title: 'Lesson 2',
+			ensureUserHasCompleted: ['lesson1'],
+			userHasCompleted: false,
 			contents: [
 
 			]
 		},
-		references: {
-			ensureUserHasCompleted: null,
+		{
 			title: 'References',
+			ensureUserHasCompleted: null,
 			contents: [
 				'<path to single ref page>'
 			]
 		},
-		flashcards: {
-			ensureUserHasCompleted: ['lesson1', 'lesson2'],
+		{
 			title: 'Flashcards'
-		},
-		assessments: {
 			ensureUserHasCompleted: ['lesson1', 'lesson2'],
+			contents: [
+				{
+					heading: 'HEADING TEXT',
+					frontText: 'FRONT TEXT',
+					frontImage: 'path or null',
+					backText: 'BACK TEXT',
+					backImage: 'BACK IMAGE!' 
+				}
+			]
+		},
+		{
 			title: 'Assessments'
+			ensureUserHasCompleted: ['lesson1', 'lesson2'],
 		}
 	]
 
