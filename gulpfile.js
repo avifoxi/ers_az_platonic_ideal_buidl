@@ -8,6 +8,10 @@ var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash').assign;
 var sass = require('gulp-sass');
 var streamify = require('gulp-streamify');
+var server = require('gulp-server-livereload');
+
+
+
 
 /* 
 
@@ -55,13 +59,18 @@ gulp.task('watch', function () {
 });
 
 
-
-
 gulp.task('copy', function(){
-
   gulp.src(filesToCopy, {base: './source'})
   .pipe(gulp.dest('./dist/'));
+});
 
-
+gulp.task('serve', ['watch'], function() {
+  gulp.src('dist')
+    .pipe(server({
+      defaultFile: 'index.html',
+      livereload: true,
+      // directoryListing: true,
+      open: true
+    }));
 });
 
