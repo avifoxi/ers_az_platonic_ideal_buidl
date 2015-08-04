@@ -1,8 +1,28 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-require('./controllers/ERS');
+var ERS = require('./controllers/ERS');
 
 window.$ = require('jquery');
 
+window.pagesMaster = ERS.pagesMaster;
+window.pages = ERS.pages;
+window.currentPage = ERS.currentPage;
+window.lessonNumber = ERS.lessonNumber;
+window.pageChanging = ERS.pageChanging;
+window.pagetype = ERS.pagetype;
+window.devMode = ERS.devMode;
+window.goToPage = ERS.goToPage;
+window.checkComplete = ERS.checkComplete;
+window.goHome = ERS.goHome;
+window.showHome = ERS.showHome;
+window.doPrevious = ERS.doPrevious;
+window.doNext = ERS.doNext;
+window.doPage = ERS.doPage;
+window.doStart = ERS.doStart;
+window.openLesson = ERS.openLesson;
+window.buildNav = ERS.buildNav;
+window.navConstraint = ERS.navConstraint;
+window.checkThumb = ERS.checkThumb;
+window.showModal = ERS.showModal
 },{"./controllers/ERS":3,"jquery":2}],2:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.4
@@ -9676,6 +9696,29 @@ function showModal(title, content, bookmark, cont) {
   $('#modal_frame').css('top', ( $('#content').height() / 2 ) - $('#modal_frame').height());
   $('#modal_frame').show();
 }
+
+module.exports = {
+  pagesMaster: pagesMaster,
+  pages: pages,
+  currentPage: currentPage,
+  lessonNumber: lessonNumber,
+  pageChanging: pageChanging,
+  pagetype: pagetype,
+  devMode: devMode,
+  goToPage: goToPage,
+  checkComplete: checkComplete,
+  goHome: goHome,
+  showHome: showHome,
+  doPrevious: doPrevious,
+  doNext: doNext,
+  doPage: doPage,
+  doStart: doStart,
+  openLesson: openLesson,
+  buildNav: buildNav,
+  navConstraint: navConstraint,
+  checkThumb: checkThumb,
+  showModal: showModal
+}
 },{}]},{},[1]);
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJSRUZBQ1RPUi5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJyZXF1aXJlKCcuL2NvbnRyb2xsZXJzL0VSUycpO1xuXG53aW5kb3cuJCA9IHJlcXVpcmUoJ2pxdWVyeScpO1xuIl0sImZpbGUiOiJSRUZBQ1RPUi5qcyIsInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJSRUZBQ1RPUi5qcyJdLCJzb3VyY2VzQ29udGVudCI6WyJ2YXIgRVJTID0gcmVxdWlyZSgnLi9jb250cm9sbGVycy9FUlMnKTtcblxud2luZG93LiQgPSByZXF1aXJlKCdqcXVlcnknKTtcblxud2luZG93LnBhZ2VzTWFzdGVyID0gRVJTLnBhZ2VzTWFzdGVyO1xud2luZG93LnBhZ2VzID0gRVJTLnBhZ2VzO1xud2luZG93LmN1cnJlbnRQYWdlID0gRVJTLmN1cnJlbnRQYWdlO1xud2luZG93Lmxlc3Nvbk51bWJlciA9IEVSUy5sZXNzb25OdW1iZXI7XG53aW5kb3cucGFnZUNoYW5naW5nID0gRVJTLnBhZ2VDaGFuZ2luZztcbndpbmRvdy5wYWdldHlwZSA9IEVSUy5wYWdldHlwZTtcbndpbmRvdy5kZXZNb2RlID0gRVJTLmRldk1vZGU7XG53aW5kb3cuZ29Ub1BhZ2UgPSBFUlMuZ29Ub1BhZ2U7XG53aW5kb3cuY2hlY2tDb21wbGV0ZSA9IEVSUy5jaGVja0NvbXBsZXRlO1xud2luZG93LmdvSG9tZSA9IEVSUy5nb0hvbWU7XG53aW5kb3cuc2hvd0hvbWUgPSBFUlMuc2hvd0hvbWU7XG53aW5kb3cuZG9QcmV2aW91cyA9IEVSUy5kb1ByZXZpb3VzO1xud2luZG93LmRvTmV4dCA9IEVSUy5kb05leHQ7XG53aW5kb3cuZG9QYWdlID0gRVJTLmRvUGFnZTtcbndpbmRvdy5kb1N0YXJ0ID0gRVJTLmRvU3RhcnQ7XG53aW5kb3cub3Blbkxlc3NvbiA9IEVSUy5vcGVuTGVzc29uO1xud2luZG93LmJ1aWxkTmF2ID0gRVJTLmJ1aWxkTmF2O1xud2luZG93Lm5hdkNvbnN0cmFpbnQgPSBFUlMubmF2Q29uc3RyYWludDtcbndpbmRvdy5jaGVja1RodW1iID0gRVJTLmNoZWNrVGh1bWI7XG53aW5kb3cuc2hvd01vZGFsID0gRVJTLnNob3dNb2RhbCJdLCJmaWxlIjoiUkVGQUNUT1IuanMiLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

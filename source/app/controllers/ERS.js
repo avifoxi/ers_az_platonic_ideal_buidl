@@ -458,3 +458,26 @@ function showModal(title, content, bookmark, cont) {
   $('#modal_frame').css('top', ( $('#content').height() / 2 ) - $('#modal_frame').height());
   $('#modal_frame').show();
 }
+
+module.exports = {
+  pagesMaster: pagesMaster,
+  pages: pages,
+  currentPage: currentPage,
+  lessonNumber: lessonNumber,
+  pageChanging: pageChanging,
+  pagetype: pagetype,
+  devMode: devMode,
+  goToPage: goToPage,
+  checkComplete: checkComplete,
+  goHome: goHome,
+  showHome: showHome,
+  doPrevious: doPrevious,
+  doNext: doNext,
+  doPage: doPage,
+  doStart: doStart,
+  openLesson: openLesson,
+  buildNav: buildNav,
+  navConstraint: navConstraint,
+  checkThumb: checkThumb,
+  showModal: showModal
+}
