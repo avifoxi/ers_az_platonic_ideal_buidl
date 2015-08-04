@@ -2,4 +2,4 @@ window.$ = require('jquery');
 
 var ERS = {};
 
-// console.log('foo this bar yo');
+console.log('foo this bar yo');
