@@ -9,8 +9,15 @@
   "author": "AFR",
   "license": "MIT",
   "devDependencies": {
+    "browserify": "^9.0.8",
     "gulp": "^3.9.0",
-    "gulp-browserify": "^0.5.1"
+    "gulp-browserify": "^0.5.1",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-util": "^3.0.6",
+    "gulp-watchify": "^0.5.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.3.1"
   },
   "dependencies": {
     "jquery": "^2.1.4",
