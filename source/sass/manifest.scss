@@ -7,13 +7,22 @@ IMPORT CSS RESET + VENDOR STYLES
 @import './vendor/reset';
 @import './vendor/skeleton';
 
-
 /********** 
 
 IMPORT BASE STYLES
 
 **********/
 
+@import './base/typography';
+@import './base/global';
+
+/********** 
+
+IMPORT VENDOR COMPONENT STYLES
+
+**********/
+
+@import './vendor/jplayer.purple';
 
 
 
