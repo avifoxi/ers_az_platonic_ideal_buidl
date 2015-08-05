@@ -3,5 +3,6 @@
   "unused": true,
   "browser": true,
   "browserify": true,
-  "predef": [ "MY_GLOBAL" ]
+  "predef": [ "MY_GLOBAL" ],
+  "funcscope":true
 }
