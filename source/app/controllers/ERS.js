@@ -23,61 +23,46 @@ masterController.showHome = function(){
   console.log('placeholder');
 };
 
-masterController.prepareLessonViews = function(){
-
+masterController.prepareCourseViews = function(course){
+  $("#course_title").text(course.title);
+  // Set up Course map page
+    document.title = course.title;
+    var maptiles = '<div class="map_row">';
+    var maptiles = '';
+    var less = course.lessons;
+    for ( var ind in less ) {
+        maptiles += ' <div class="map_tile map_lesson one-third column cursor" id="' + ind + '">';
+        maptiles += '   <img src="images/lessoncompletion_check.png" class="completion_check">';
+        if (less[ind].summary) {
+          maptiles += '<a href="assets/audio/'+ less[ind].summary +'" class="audio_summary"></a>';
+      }
+        maptiles += '   <div class="tile_img slideshow">';
+        for ( var sli=0; sli < less[ind].thumbnails; sli++ ) {
+        var classes = sli == 0 ? 'first' : '';
+        maptiles += '     <img src="lessons/lesson' + ind + '/thumbnails/lesson' + sli + '.png" width="300" height="98" />';
+        }
+        maptiles += '   </div>';
+        maptiles += ' <div class="tile_label">';
+        maptiles += '   <div class="number">' + (parseInt(ind)+1) + '</div>';
+        maptiles += '   <div class="title"><p>' + less[ind].title + '</p><span>' + less[ind].time + '</span></div>';
+        maptiles += '   </div>';
+        maptiles += ' </div>';
+    }
+    maptiles += '</div>';
+    
+    $('#course_map').prepend(maptiles);
+    
 };
 
 masterController.attachListeners = function(){
-  
-};
 
-masterController.doStart = function (courseUrl){
-  // Load pages array for module via AJAX
-    var course;
-    
-    $.getJSON(courseUrl, function(res){
-      course = res;
-    }).fail(function(e){
-      console.log('Error!')
-    });
-    
+  $('#modal_frame .bookmark_buttons .menu').click(function(e){
+    pagetype='';
+    goHome();
+    $('#modal_frame').fadeOut();
+    showHome();
+  });
 
-    // Set up modal
-    $('#modal_frame .bookmark_buttons .menu').click(function(e){
-      pagetype='';
-      goHome();
-      $('#modal_frame').fadeOut();
-      showHome();
-    });
-    
-  //     // Set up Course map page
-    $("#Course_title").text(course.title);
-  //   document.title = Course.title;
-  //   //var maptiles = '<div class="map_row">';
-  //   var maptiles = '';
-  //   var less = Course.lessons;
-  //   for ( var ind in less ) {
-  //       maptiles += ' <div class="map_tile map_lesson one-third column cursor" id="' + ind + '">';
-  //       maptiles += '   <img src="images/lessoncompletion_check.png" class="completion_check">';
-  //       if (less[ind].summary) {
-  //         maptiles += '<a href="assets/audio/'+ less[ind].summary +'" class="audio_summary"></a>';
-  //     }
-  //       maptiles += '   <div class="tile_img slideshow">';
-  //       for ( var sli=0; sli < less[ind].thumbnails; sli++ ) {
-  //       var classes = sli == 0 ? 'first' : '';
-  //       maptiles += '     <img src="lessons/lesson' + ind + '/thumbnails/lesson' + sli + '.png" width="300" height="98" />';
-  //       }
-  //       maptiles += '   </div>';
-  //       maptiles += ' <div class="tile_label">';
-  //       maptiles += '   <div class="number">' + (parseInt(ind)+1) + '</div>';
-  //       maptiles += '   <div class="title"><p>' + less[ind].title + '</p><span>' + less[ind].time + '</span></div>';
-  //       maptiles += '   </div>';
-  //       maptiles += ' </div>';
-  //   }
-  //   //maptiles += '</div>';
-    
-  //   $('#Course_map').prepend(maptiles);
-    
   //   $('#return_home').click(function(e){
   //     e.preventDefault();
   //     e.stopPropagation();
@@ -116,6 +101,21 @@ masterController.doStart = function (courseUrl){
   //     currentPage = 'home';
   //     goToPage();
   //   });
+};
+
+masterController.doStart = function (courseUrl){
+  // Load pages array for module via AJAX
+    var course;
+    var self = this;
+    this.attachListeners();
+
+
+    $.getJSON(courseUrl, function(res){
+      self.prepareCourseViews(res);
+    }).fail(function(e){
+      console.log('Error!')
+    });
+  
   //   // Begin activity
   //   $('.map_check').click(function(e){
   //     e.preventDefault();

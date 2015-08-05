@@ -57,7 +57,19 @@ gulp.task('watch', function () {
   gulp.watch('./source/sass/**/*.scss', ['sass']);
   gulp.watch(filesToCopy, ['copy']);
   gulp.watch('./source/assets/*/courseData/*.json', ['jsonLint'])
+  gulp.watch('./source/app/views/*.html', ['concatViews']);
+)
 });
+
+gulp.task('concatViews', function(){
+  var templates = [
+    './source/app/views/*.html',
+    './source/app/views/*/*.html'
+  ];
+  gulp.src(templates)
+  // https://www.npmjs.com/package/gulp-template-compile
+  .pipe()
+})
 
 gulp.task('jsonLint', function(){
 
