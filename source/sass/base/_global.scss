@@ -1,6 +1,6 @@
 html{height: 100%;}
 body {
-    background: url("../images/bg.jpg") no-repeat scroll center top #371F59;
+    background: url("../assets/global/images/bg.jpg") no-repeat scroll center top #371F59;
     color: #2D2D2D;
     font: 16px/16px 'ProximaNovaRegular',Helvetica,Arial,sans-serif;
     height: 100%;
@@ -60,7 +60,7 @@ sub {
 
 #header {margin-bottom: 15px;}
 #header_right, #courseMap2_headerRight {
-    background: url("../images/logo.png") no-repeat scroll left bottom transparent;
+    background: url("../assets/global/images/logo.png") no-repeat scroll left bottom transparent;
     float: right;
     height: 45px;
     padding: 12px 0 0 0;
