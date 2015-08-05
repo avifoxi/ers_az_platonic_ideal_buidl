@@ -21,4 +21,4 @@ window.openLesson = ERS.openLesson;
 window.buildNav = ERS.buildNav;
 window.navConstraint = ERS.navConstraint;
 window.checkThumb = ERS.checkThumb;
-window.showModal = ERS.showModal
+window.showModal = ERS.showModal;

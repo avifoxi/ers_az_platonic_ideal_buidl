@@ -8,10 +8,9 @@ var sourcemaps = require('gulp-sourcemaps');
 var assign = require('lodash').assign;
 var sass = require('gulp-sass');
 var streamify = require('gulp-streamify');
+var jshint = require('gulp-jshint');
+
 var server = require('gulp-server-livereload');
-
-
-
 
 /* 
 
@@ -49,15 +48,25 @@ gulp.task('sass', function () {
 });
 
 gulp.task('watch', function () {
-  // ... other watch code ...
 
-  gulp.watch('./source/app/**/*.js', ['watchify']);
-
+  gulp.watch('./source/app/**/*.js', ['lint', 'watchify']);
   gulp.watch('./source/sass/**/*.scss', ['sass']);
-
   gulp.watch(filesToCopy, ['copy']);
 });
 
+
+gulp.task('lint', function() {
+  var lintMeDontLintMe = [
+    './source/app/**/*.js',
+    '!./source/app/legacyScripts/*',
+    '!./source/app/legacyScripts/*/*',
+    '!./source/app/legacyScripts/*/*/*'
+  ];
+
+  return gulp.src(lintMeDontLintMe)
+    .pipe(jshint())
+    .pipe(jshint.reporter('jshint-stylish'));
+});
 
 gulp.task('copy', function(){
   gulp.src(filesToCopy, {base: './source'})
